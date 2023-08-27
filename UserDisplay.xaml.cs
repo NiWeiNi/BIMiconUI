@@ -1,4 +1,6 @@
 ﻿using BIMicon.BIMiconUI.Models;
+using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,6 +13,11 @@ namespace BIMicon.BIMiconUI
     {
         public UserDisplay(Message message)
         {
+            // Load MaterialDesign libraries as they won't be properly handled by Revit otherwise
+            // Code adopted from https://stackoverflow.com/questions/55594443/how-to-include-materialdesignxamltoolkit-to-wpf-class-library
+            Assembly.LoadFrom(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "MaterialDesignThemes.Wpf.dll"));
+            Assembly.LoadFrom(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "MaterialDesignColors.dll"));
+
             InitializeComponent();
 
             this.Title = message.Type.ToString();
