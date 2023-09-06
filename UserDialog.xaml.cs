@@ -7,11 +7,11 @@ using System.Windows.Input;
 namespace BIMicon.BIMiconUI
 {
     /// <summary>
-    /// Interaction logic for UserDisplay.xaml
+    /// Interaction logic for UserDialog.xaml
     /// </summary>
-    public partial class UserDisplay : Window
+    public partial class UserDialog : Window
     {
-        public UserDisplay(Message message)
+        public UserDialog(Message message)
         {
             // Load MaterialDesign libraries as they won't be properly handled by Revit otherwise
             // Code adopted from https://stackoverflow.com/questions/55594443/how-to-include-materialdesignxamltoolkit-to-wpf-class-library
@@ -20,9 +20,9 @@ namespace BIMicon.BIMiconUI
 
             InitializeComponent();
 
-            this.Title = message.Type.ToString();
-            this.messageTitle.Text = message.Title;
-            this.message.Text = message.Content;
+            Title = message.Type.ToString();
+            messageTitle.Text = message.Title;
+            messageUser.Text = message.Content;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
